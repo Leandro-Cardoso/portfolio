@@ -1,7 +1,14 @@
 <template>
-  <footer class="border-t">
-    <div class="max-w-7xl mx-auto p-4">
-      Footer
+  <footer
+    id="contact"
+    class="border-t"
+  >
+    <div
+      class="mx-auto max-w-7xl px-6 py-8"
+    >
+      <p class="text-sm">
+        © 2026 Leandro Cardoso
+      </p>
     </div>
   </footer>
 </template>
