@@ -1,13 +1,27 @@
 <template>
-  <div>
-    <HomeHeroSection />
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid gap-10 lg:grid-cols-[1fr_320px]">
+      
+      <!-- COLUNA PRINCIPAL -->
+      <div class="space-y-10">
+        <HomeHeroSection />
+        <HomeAboutSection />
+        <HomeFeaturedProjects />
+        <HomeGithubActivity />
 
-    <HomeAboutSection />
+        <!-- 👇 BLOG SÓ NO MOBILE -->
+        <div class="lg:hidden">
+          <HomeBlogPreview />
+        </div>
+      </div>
 
-    <HomeFeaturedProjects />
+      <!-- SIDEBAR (DESKTOP) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-12 space-y-6">
+          <HomeBlogPreview />
+        </div>
+      </aside>
 
-    <HomeGithubActivity />
-
-    <HomeBlogPreview />
+    </div>
   </div>
 </template>
