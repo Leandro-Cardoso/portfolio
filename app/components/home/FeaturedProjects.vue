@@ -31,7 +31,8 @@
 </template>
 
 <script setup lang="ts">
-// Projetos pinados no GitHub
+// TODO: Projetos pinados no GitHub.
+// TODO: Usar Web site para URL do projeto.
 const projects = [
   {
     title: "2D Game Engine",
