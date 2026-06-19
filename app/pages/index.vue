@@ -3,7 +3,7 @@
     <div class="grid gap-10 lg:grid-cols-[1fr_320px]">
       
       <!-- COLUNA PRINCIPAL -->
-      <div class="space-y-10">
+      <div class="space-y-14">
         <HomeHeroSection />
         <HomeAboutSection />
         <HomeFeaturedProjects />
@@ -17,7 +17,7 @@
 
       <!-- SIDEBAR (DESKTOP) -->
       <aside class="hidden lg:block">
-        <div class="sticky top-12 space-y-6">
+        <div class="sticky top-12 space-y-14">
           <HomeBlogPreview />
         </div>
       </aside>

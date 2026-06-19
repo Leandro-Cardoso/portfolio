@@ -1,7 +1,7 @@
 <template>
   <section
     id="home"
-    class="mx-auto max-w-7xl px-6 py-24"
+    class="mx-auto max-w-7xl px-6 py-24 mb-12"
   >
     <div class="max-w-4xl">
       <p
@@ -11,7 +11,7 @@
       </p>
 
       <h1
-        class="mb-6 text-5xl font-bold tracking-tight md:text-7xl"
+        class="mb-6 text-5xl font-semibold tracking-tight md:text-7xl"
       >
         Leandro Cardoso
       </h1>

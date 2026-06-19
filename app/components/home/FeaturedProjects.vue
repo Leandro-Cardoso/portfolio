@@ -1,7 +1,7 @@
 <template>
   <section
     id="projects"
-    class="mx-auto max-w-7xl px-6 py-20"
+    class="mx-auto max-w-7xl px-6 py-24 mb-12"
   >
     <div class="mb-12">
       <h2
@@ -31,8 +31,6 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Projetos pinados no GitHub.
-// TODO: Usar Web site para URL do projeto.
 const projects = [
   {
     title: "2D Game Engine",

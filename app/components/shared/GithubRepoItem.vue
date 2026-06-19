@@ -1,6 +1,9 @@
 <template>
   <div
-    class="flex items-start justify-between gap-4 rounded-lg border p-4 transition hover:bg-black/5"
+    class="flex items-start justify-between gap-4 rounded-lg border
+    border-neutral-200/60 bg-white p-4 transition
+    hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900
+    dark:hover:bg-neutral-800/40"
   >
     <div class="min-w-0">
       <h3 class="font-medium truncate">

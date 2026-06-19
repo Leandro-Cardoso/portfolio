@@ -1,6 +1,8 @@
 <template>
   <article
-    class="rounded-xl border p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
+    class="rounded-xl border border-neutral-200/60 bg-white p-6 transition
+    hover:-translate-y-1 hover:border-neutral-300 hover:shadow-sm
+    dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700"
   >
     <div class="mb-4 flex items-center justify-between">
       <h3 class="text-xl font-semibold">

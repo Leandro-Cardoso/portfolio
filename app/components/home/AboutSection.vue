@@ -1,7 +1,7 @@
 <template>
   <section
     id="about"
-    class="mx-auto max-w-7xl px-6 py-20"
+    class="mx-auto max-w-7xl px-6 py-24 mb-12"
   >
     <div class="max-w-4xl">
       <h2

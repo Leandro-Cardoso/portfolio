@@ -1,39 +1,39 @@
 <template>
-  <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
     <div
-      class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
+      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6"
     >
       <a
         href="#"
-        class="text-lg font-semibold tracking-tight"
+        class="text-lg font-semibold tracking-tight transition-colors duration-200 hover:text-neutral-600 dark:hover:text-neutral-300"
       >
         Leandro Cardoso DEV
       </a>
 
-      <nav class="hidden gap-8 md:flex">
-        <a href="#home" class="hover:opacity-70">
+      <nav class="hidden items-center gap-8 text-sm md:flex">
+        <a href="#home" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Home
         </a>
 
-        <a href="#projects" class="hover:opacity-70">
+        <a href="#projects" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Projetos
         </a>
 
-        <a href="#blog" class="hover:opacity-70">
+        <a href="#blog" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Blog
         </a>
 
-        <a href="#about" class="hover:opacity-70">
+        <a href="#about" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Sobre
         </a>
 
-        <a href="#contact" class="hover:opacity-70">
+        <a href="#contact" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Contato
         </a>
       </nav>
 
       <button
-        class="md:hidden"
+        class="md:hidden transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white"
         aria-label="Abrir Menu"
       >
         ☰
