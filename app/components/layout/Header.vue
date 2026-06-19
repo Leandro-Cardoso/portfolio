@@ -11,13 +11,13 @@
       </a>
 
       <nav class="hidden items-center gap-8 text-sm md:flex">
-        <a href="#home" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
+        <NuxtLink to="/" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Home
-        </a>
+        </NuxtLink>
 
-        <a href="#projects" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
+        <NuxtLink to="/projects" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Projetos
-        </a>
+        </NuxtLink>
 
         <a href="#blog" class="transition-colors duration-200 hover:text-neutral-900 dark:hover:text-white">
           Blog
