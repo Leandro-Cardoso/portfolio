@@ -15,7 +15,7 @@
       </div>
 
       <a
-        href="https://github.com"
+        href="https://github.com/Leandro-Cardoso?tab=repositories"
         target="_blank"
         class="text-sm font-medium hover:underline"
       >
@@ -34,27 +34,5 @@
 </template>
 
 <script setup lang="ts">
-const repos = [
-  {
-    name: "logger-rs",
-    description: "Biblioteca de logging em Rust",
-    language: "Rust",
-    stars: 12,
-    url: "#",
-  },
-  {
-    name: "sienge-integration",
-    description: "Integração com sistemas corporativos",
-    language: "Rust",
-    stars: 8,
-    url: "#",
-  },
-  {
-    name: "game-engine-2d",
-    description: "Engine 2D em C++ com SDL2",
-    language: "C++",
-    stars: 5,
-    url: "#",
-  },
-]
+const repos = await useGithubRepos()
 </script>

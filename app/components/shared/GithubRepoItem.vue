@@ -22,7 +22,7 @@
       target="_blank"
       class="text-sm font-medium hover:underline shrink-0"
     >
-      Abrir →
+      GitHub →
     </a>
   </div>
 </template>
