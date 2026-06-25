@@ -20,17 +20,19 @@
     >
       <SharedProjectCard
         v-for="project in projects"
-        :key="project.title"
-        :title="project.title"
+        :key="project.slug"
+        :slug="project.slug"
+        :title="project.name"
         :description="project.description"
         :language="project.language"
-        :repository-url="project.repositoryUrl"
+        :stars="project.stars"
       />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+// const projects = await useFeaturedRepos()
 const projects = [
   {
     title: "2D Game Engine",

@@ -21,11 +21,12 @@
     >
       <SharedProjectCard
         v-for="repo in repos"
-        :key="repo.name"
+        :key="repo.slug"
+        :slug="repo.slug"
         :title="repo.name"
         :description="repo.description"
         :language="repo.language"
-        :repository-url="repo.url"
+        :stars="repo.stars"
       />
     </div>
   </div>
