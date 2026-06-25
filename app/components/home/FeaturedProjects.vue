@@ -19,7 +19,7 @@
       class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
     >
       <SharedProjectCard
-        v-for="project in projects"
+        v-for="project in featuredProjects"
         :key="project.slug"
         :slug="project.slug"
         :title="project.name"
@@ -32,54 +32,9 @@
 </template>
 
 <script setup lang="ts">
-// const projects = await useFeaturedRepos()
-const projects = [
-  {
-    title: "2D Game Engine",
-    description:
-      "Engine 2D desenvolvida em C++ utilizando SDL2.",
-    language: "C++",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/2d-game-engine/",
-  },
+const projects = await useGithubRepos()
 
-  {
-    title: "Portfólio Antigo",
-    description:
-      "Versão antiga do meu portfolio.",
-    language: "JavaSccript",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/DEV",
-  },
-
-  {
-    title: "Emprego Seguro API",
-    description:
-      "Trabalho sobre o projeto do app Emprego Seguro. Trabalho realizado para a disciplina de Práticas Extensionistas Integradoras IV, 4º período, turma A, curso de Engenharia de Software da Universidade de Vassouras (Univassouras), ministrado pelo professor Dr. Diego Ramos Inácio.",
-    language: "Python",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/Emprego-Seguro-api",
-  },
-
-  {
-    title: "Minefield",
-    description:
-      "Jogo Campo Minado desenvolvido em Java para rodar no terminal.",
-    language: "Java",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/GAME-Minefield-Java",
-  },
-
-  {
-    title: "Sea Battle",
-    description:
-      "Jogo Batalha Naval desenvolvido em Python para rodar no terminal.",
-    language: "Python",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/GAME-Sea-Battle-CMD",
-  },
-  
-  {
-    title: "Tic-Tac-Toe",
-    description:
-      "Tic Tac Toe by Código Fonte TV.",
-    language: "JavaScript",
-    repositoryUrl: "https://github.com/Leandro-Cardoso/tic-tac-toe",
-  },
-]
+const featuredProjects = [...projects]
+  .sort((a, b) => b.stars - a.stars)
+  .slice(0, 3)
 </script>

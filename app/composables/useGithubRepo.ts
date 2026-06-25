@@ -1,9 +1,12 @@
-export const useGithubRepo = async (
-  repoName: string
-) => {
+export const useGithubRepo = async (repoName: string) => {
   const username = "Leandro-Cardoso"
 
-  return await $fetch(
-    `https://api.github.com/repos/${username}/${repoName}`
-  )
+  try {
+    return await $fetch(
+      `https://api.github.com/repos/${username}/${repoName}`
+    )
+  } catch (err) {
+    console.error("Erro GitHub repo:", err)
+    return null
+  }
 }
