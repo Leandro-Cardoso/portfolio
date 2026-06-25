@@ -38,6 +38,7 @@
       >
         ☰
       </button>
+      <!-- TODO: MENU SANDUICHE FUNCIONAL -->
     </div>
   </header>
 </template>

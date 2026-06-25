@@ -32,9 +32,8 @@
 </template>
 
 <script setup lang="ts">
-const projects = await useGithubRepos()
-
-const featuredProjects = [...projects]
-  .sort((a, b) => b.stars - a.stars)
-  .slice(0, 3)
+  const projects = await useGithubRepos()
+  const featuredProjects = [...projects]
+    .sort((a, b) => b.stars - a.stars)
+    .slice(0, 3)
 </script>
