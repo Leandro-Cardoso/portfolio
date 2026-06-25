@@ -16,7 +16,7 @@
     </div>
 
     <div
-      class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      class="grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3"
     >
       <SharedProjectCard
         v-for="project in featuredProjects"
