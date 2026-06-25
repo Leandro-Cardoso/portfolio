@@ -7,7 +7,6 @@
         <HomeHeroSection />
         <HomeAboutSection />
         <HomeFeaturedProjects />
-        <HomeGithubActivity />
 
         <!-- 👇 BLOG SÓ NO MOBILE -->
         <div class="lg:hidden">
