@@ -6,7 +6,7 @@
       <div class="space-y-14">
         <HomeHeroSection />
         <HomeAboutPreview />
-        <HomeFeaturedProjects />
+        <ProjectsFeaturedProjects :show-more="true" />
 
         <!-- MOBILE -->
         <div class="lg:hidden">

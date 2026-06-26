@@ -19,23 +19,10 @@
     <div v-if="!route.params.repo">
 
       <!-- PROJETOS EM DESTAQUE -->
-      <HomeFeaturedProjects />
+      <ProjectsFeaturedProjects />
 
       <!-- PROJETOS RECENTES -->
-      <h2 class="mb-4 text-3xl font-semibold tracking-tight">
-        Recentes
-      </h2>
-      <div class="grid gap-4">
-        <SharedProjectCard
-          v-for="repo in repos"
-          :key="repo.slug"
-          :slug="repo.slug"
-          :title="repo.name"
-          :description="repo.description"
-          :language="repo.language"
-          :stars="repo.stars"
-        />
-      </div>
+      <ProjectsProjectList />
 
     </div>
 
@@ -44,5 +31,4 @@
 
 <script setup lang="ts">
   const route = useRoute()
-  const repos = await useGithubRepos()
 </script>
