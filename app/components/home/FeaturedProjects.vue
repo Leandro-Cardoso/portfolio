@@ -4,9 +4,7 @@
     class="mx-auto max-w-7xl px-6 py-24 mb-12"
   >
     <div class="mb-12">
-      <h2
-        class="mb-4 text-3xl font-bold tracking-tight"
-      >
+      <h2 class="mb-4 text-3xl font-bold tracking-tight">
         Projetos em Destaque
       </h2>
 
@@ -32,8 +30,5 @@
 </template>
 
 <script setup lang="ts">
-  const projects = await useGithubRepos()
-  const featuredProjects = [...projects]
-    .sort((a, b) => b.stars - a.stars)
-    .slice(0, 3)
+  const featuredProjects = await useGithubPinnedRepos()
 </script>

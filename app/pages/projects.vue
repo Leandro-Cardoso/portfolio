@@ -19,12 +19,7 @@
     <div v-if="!route.params.repo">
 
       <!-- PROJETOS EM DESTAQUE -->
-      <h2 class="mb-4 text-3xl font-semibold tracking-tight">
-        Destaque
-      </h2>
-      <div class="grid gap-4" md:grid-cols-2 xl:grid-cols-3>
-        <!-- TODO: PROJETOS EM DESTAQUE AQUI -->
-      </div>
+      <HomeFeaturedProjects />
 
       <!-- PROJETOS RECENTES -->
       <h2 class="mb-4 text-3xl font-semibold tracking-tight">
