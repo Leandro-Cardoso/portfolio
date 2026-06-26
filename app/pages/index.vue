@@ -1,9 +1,9 @@
 <template>
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="grid gap-10 lg:grid-cols-[1fr_320px]">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="grid gap-4 lg:grid-cols-[1fr_320px]">
       
       <!-- MAIN -->
-      <div class="space-y-14">
+      <div class="space-y-4">
         <HomeHeroSection />
         <HomeAboutPreview />
         <ProjectsFeaturedProjects :show-more="true" />
@@ -16,7 +16,7 @@
 
       <!-- DESKTOP -->
       <aside class="hidden lg:block">
-        <div class="sticky top-12 space-y-14">
+        <div class="sticky top-20 space-y-4">
           <HomeBlogPreview />
         </div>
       </aside>

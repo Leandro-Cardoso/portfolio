@@ -1,16 +1,16 @@
 <template>
   <section
     id="blog"
-    class="mx-auto max-w-7xl px-6 py-24 mb-12"
+    class="mx-auto max-w-7xl px-4 py-4 mb-4"
   >
-    <div class="mb-10">
+    <div class="mb-4">
       <h2
         class="text-3xl font-bold tracking-tight"
       >
         Blog
       </h2>
 
-      <p class="mt-2 opacity-70">
+      <p class="mt-4 opacity-70">
         Últimos artigos e curiosidades sobre tecnologia e desenvolvimento de software.
       </p>
     </div>

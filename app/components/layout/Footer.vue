@@ -1,10 +1,10 @@
 <template>
   <footer
     id="contact"
-    class="mt-24 border-t border-neutral-200/60 dark:border-neutral-800"
+    class="mt-4 border-t border-neutral-200/60 dark:border-neutral-800"
   >
     <div
-      class="mx-auto max-w-7xl px-6 py-12"
+      class="mx-auto max-w-7xl px-4 py-6"
     >
       <div
         class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
@@ -51,7 +51,7 @@
       </div>
 
       <div
-        class="mt-10 border-t border-neutral-200/60 pt-6 text-sm text-neutral-500 dark:border-neutral-800"
+        class="mt-6 border-t border-neutral-200/60 pt-6 text-sm text-neutral-500 dark:border-neutral-800"
       >
         © 2026 Leandro Cardoso. Todos os direitos reservados.
       </div>

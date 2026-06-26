@@ -1,23 +1,23 @@
 <template>
   <section
     id="about"
-    class="mx-auto max-w-7xl px-6 py-24 mb-12"
+    class="mx-auto max-w-7xl px-4 py-4 mb-4"
   >
     <div class="max-w-4xl">
       <h2
-        class="mb-8 text-3xl font-bold tracking-tight"
+        class="mb-4 text-3xl font-bold tracking-tight"
       >
         Sobre Mim
       </h2>
 
       <p
-        class="mb-6 text-lg leading-relaxed opacity-80"
+        class="mb-4 text-lg leading-relaxed opacity-80"
       >
         Sou engenheiro de software e desenvolvedor com foco em testes unitários, arquitetura modular, padrões de projetos, escalabilidade, seguraça e alta performance.
       </p>
 
       <p
-        class="mb-6 text-lg leading-relaxed opacity-80"
+        class="mb-4 text-lg leading-relaxed opacity-80"
       >
         Atualmente trabalho com integrações empresariais,
         APIs REST, Docker, bancos de dados e desenvolvimento
@@ -25,13 +25,13 @@
       </p>
 
       <p
-        class="mb-10 text-lg leading-relaxed opacity-80"
+        class="mb-4 text-lg leading-relaxed opacity-80"
       >
         Tenho especial interesse em engenharia de sofware, desenvolvimento backend, ciências de dados e IA.
       </p>
 
       <div
-        class="flex flex-wrap gap-3"
+        class="flex flex-wrap gap-4"
       >
         <span
           v-for="tech in technologies"

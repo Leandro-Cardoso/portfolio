@@ -1,7 +1,7 @@
 <template>
-  <header class="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
+  <header class="mb-4 sticky top-0 z-50 border-b border-neutral-200/60 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
     <div
-      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6"
+      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4"
     >
       <a
         href="#"
