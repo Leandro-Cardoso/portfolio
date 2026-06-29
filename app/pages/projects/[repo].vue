@@ -39,7 +39,7 @@
 
       <div
         v-if="readmeHtml"
-        class="my-8"
+        class="markdown my-8"
         v-html="readmeHtml"
       />
     </div>

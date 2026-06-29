@@ -1,0 +1,105 @@
+.markdown {
+  @apply leading-8 text-neutral-700 dark:text-neutral-300;
+}
+
+/* Títulos */
+
+.markdown h1 {
+  @apply mt-4 mb-8 border-b border-neutral-200 pb-4 text-center text-4xl font-bold tracking-tight dark:border-neutral-800;
+}
+
+.markdown h2 {
+  @apply my-4 text-3xl font-semibold tracking-tight;
+}
+
+.markdown h3 {
+  @apply my-4 text-2xl font-semibold;
+}
+
+.markdown h4 {
+  @apply my-4 text-xl font-semibold;
+}
+
+/* Texto */
+
+.markdown p {
+  @apply my-4 leading-8;
+}
+
+.markdown strong {
+  @apply font-semibold text-neutral-900 dark:text-white;
+}
+
+.markdown em {
+  @apply italic;
+}
+
+/* Links */
+
+.markdown a {
+  @apply font-medium text-orange-600 transition-colors hover:text-yellow-500;
+}
+
+/* Listas */
+
+.markdown ul {
+  @apply my-4 list-disc pl-12;
+}
+
+.markdown ol {
+  @apply my-4 list-decimal pl-12;
+}
+
+.markdown li {
+  @apply my-0;
+}
+
+/* Citações */
+
+.markdown blockquote {
+  @apply my-4 border-l-4 border-neutral-300 pl-0.5 italic text-neutral-600 dark:border-neutral-700 dark:text-neutral-400;
+}
+
+/* Código */
+
+.markdown code {
+  @apply rounded bg-neutral-100 px-1.5 py-4 font-mono text-sm dark:bg-neutral-800;
+}
+
+.markdown pre {
+  @apply my-4 overflow-x-auto rounded-xl bg-neutral-900 p-4 text-neutral-100;
+}
+
+.markdown pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Imagens */
+
+.markdown img {
+  @apply my-4 rounded-xl border border-neutral-200 dark:border-neutral-800;
+}
+
+/* Tabelas */
+
+.markdown table {
+  @apply my-4 w-full border-collapse;
+}
+
+.markdown thead {
+  @apply border-b border-neutral-300 dark:border-neutral-700;
+}
+
+.markdown th {
+  @apply px-4 py-2 text-center font-semibold;
+}
+
+.markdown td {
+  @apply border-b border-neutral-200 px-4 py-2 dark:border-neutral-800;
+}
+
+/* Linha horizontal */
+
+.markdown hr {
+  @apply my-4 border-neutral-200 dark:border-neutral-800;
+}
