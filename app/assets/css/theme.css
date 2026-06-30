@@ -1,0 +1,22 @@
+:root {
+  /* Fundo */
+  --color-background: #fafafa;
+
+  /* Superfícies (cards, header, etc.) */
+  --color-surface: #ffffff;
+
+  /* Texto principal */
+  --color-foreground: #171717;
+
+  /* Texto secundário */
+  --color-muted: #737373;
+
+  /* Bordas */
+  --color-border: #e5e5e5;
+
+  /* Cor de destaque */
+  --color-primary: #2563eb;
+
+  /* Hover */
+  --color-primary-hover: #1d4ed8;
+}
