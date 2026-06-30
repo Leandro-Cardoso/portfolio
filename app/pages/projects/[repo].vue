@@ -50,27 +50,50 @@
   import { marked } from "marked"
 
   const route = useRoute()
-
   const repo = ref<any>(null)
   const readmeHtml = ref<string | null>(null)
 
   const load = async (name: string) => {
-    repo.value = await useGithubRepo(name)
 
+    repo.value = await useGithubRepo(name)
     const markdown = await useGithubReadme(name)
 
-    const username = "Leandro-Cardoso"
+    if (!markdown) {
+      readmeHtml.value = null
+      return
+    }
 
-    const fixedMarkdown = markdown.replace(
+    const username = "Leandro-Cardoso"
+    let fixedMarkdown = markdown
+
+    // Corrige imagens locais
+    fixedMarkdown = fixedMarkdown.replace(
       /<img\s+([^>]*?)src="([^":]+)"/g,
-      (_, attrs, src) => {
-        return `<img ${attrs}src="https://raw.githubusercontent.com/${username}/${name}/main/${src}"`
-      }
+      (_, attrs, src) =>
+        `<img ${attrs}src="https://raw.githubusercontent.com/${username}/${name}/main/${src}"`
     )
 
-    readmeHtml.value = fixedMarkdown
-      ? await marked.parse(fixedMarkdown)
-      : null
+    // Corrige links do GitHub para RAW
+    fixedMarkdown = fixedMarkdown
+      .replaceAll(
+        "https://github.com/",
+        "https://raw.githubusercontent.com/"
+      )
+      .replaceAll(
+        "/blob/",
+        "/"
+      )
+
+    let html = await marked.parse(fixedMarkdown)
+
+    // Faz todos os links abrirem em outra aba
+    html = html.replace(
+      /<a /g,
+      '<a target="_blank" rel="noopener noreferrer" '
+    )
+
+    readmeHtml.value = html
+    
   }
 
   await load(route.params.repo as string)
