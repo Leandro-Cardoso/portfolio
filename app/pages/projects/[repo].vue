@@ -47,31 +47,40 @@
 </template>
 
 <script setup lang="ts">
-import { marked } from "marked"
+  import { marked } from "marked"
 
-const route = useRoute()
+  const route = useRoute()
 
-const repo = ref<any>(null)
-const readmeHtml = ref<string | null>(null)
+  const repo = ref<any>(null)
+  const readmeHtml = ref<string | null>(null)
 
-const load = async (name: string) => {
-  repo.value = await useGithubRepo(name)
+  const load = async (name: string) => {
+    repo.value = await useGithubRepo(name)
 
-  const markdown = await useGithubReadme(name)
+    const markdown = await useGithubReadme(name)
 
-  readmeHtml.value = markdown
-    ? marked.parse(markdown)
-    : null
-}
+    const username = "Leandro-Cardoso"
 
-await load(route.params.repo as string)
+    const fixedMarkdown = markdown.replace(
+      /<img\s+([^>]*?)src="([^":]+)"/g,
+      (_, attrs, src) => {
+        return `<img ${attrs}src="https://raw.githubusercontent.com/${username}/${name}/main/${src}"`
+      }
+    )
 
-watch(
-  () => route.params.repo,
-  async (newRepo) => {
-    if (newRepo) {
-      await load(newRepo as string)
-    }
+    readmeHtml.value = fixedMarkdown
+      ? await marked.parse(fixedMarkdown)
+      : null
   }
-)
+
+  await load(route.params.repo as string)
+
+  watch(
+    () => route.params.repo,
+    async (newRepo) => {
+      if (newRepo) {
+        await load(newRepo as string)
+      }
+    }
+  )
 </script>
