@@ -1,0 +1,151 @@
+/*
+TODO: Adaptar para o base.css.
+EXEMPLOS HTML:
+https://gemini.google.com/app/8873f12d5f5bbe9b
+*/
+
+@import "tailwindcss";
+
+/* Importação da fonte JetBrains Mono (pode ser feita aqui ou no seu HTML via Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* ==========================================================================
+   1. DEFINIÇÃO DO TEMA MINIMALISTA / DARK
+   ========================================================================== */
+@theme {
+  /* Fonte Principal */
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Paleta de Cores Monocromática Escura + Destaques */
+  --color-bg-pure: #000000;          /* Preto absoluto para o fundo geral */
+  --color-bg-depth-1: #0a0a0a;      /* Divs principais, seções */
+  --color-bg-depth-2: #121212;      /* Cards, inputs, hovers */
+  --color-bg-depth-3: #1a1a1a;      /* Elementos flutuantes, bordas suaves */
+  
+  --color-text-main: #f5f5f7;       /* Branco fosco para não agredir os olhos */
+  --color-text-muted: #8e8e93;      /* Cinza para textos secundários e descrições */
+  
+  --color-brand-primary: #eab308;    /* Mostarda moderno (Equivalente ao yellow-500) */
+  --color-brand-secondary: #f97316;  /* Laranja vibrante (Equivalente ao orange-500) */
+}
+
+/* ==========================================================================
+   2. CAMADA BASE (Resets, Tipografia Responsiva e Elementos Globais)
+   ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Tamanho padrão do texto dependendo da tela (Responsivo) */
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  body {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg-pure);
+    color: var(--color-text-main);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    /* Espaçamento geral interno do body para telas menores */
+    @apply p-4 md:p-8 lg:p-12;
+  }
+
+  /* Títulos com espaçamento padrão e tamanhos fluidos */
+  h1, h2, h3, h4 {
+    color: var(--color-text-main);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  h1 { @apply text-3xl md:text-5xl mb-6 font-extrabold; }
+  h2 { @apply text-2xl md:text-3xl mb-4 border-b border-bg-depth-3 pb-2; }
+  p  { @apply mb-6 text-text-muted max-w-3xl; }
+
+  /* -------------------------------------------------------------------------
+     LINKS (Corpo e Navegação)
+     ------------------------------------------------------------------------- */
+  /* Links do corpo de texto */
+  p a, .body-link {
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+  p a:hover, .body-link:hover {
+    color: var(--color-brand-secondary);
+    text-decoration-color: var(--color-brand-secondary);
+  }
+
+  /* Links de Navegação (Navs) - Mais discretos e minimalistas */
+  nav a, .nav-link {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    @apply py-1 px-2 inline-block;
+  }
+  nav a:hover, .nav-link:hover {
+    color: var(--color-text-main);
+    /* Um pequeno ponto ou traço abaixo pode ser feito via classe no HTML, se quiser */
+  }
+  nav a.active, .nav-link.active {
+    color: var(--color-brand-primary);
+    font-weight: 600;
+  }
+
+  /* -------------------------------------------------------------------------
+     DIVS PADRONIZADOS E RECIPIENTES (Containers)
+     ------------------------------------------------------------------------- */
+  /* Container geral de layout */
+  .container-custom {
+    @apply max-w-6xl mx-auto w-full space-y-12 md:space-y-20;
+  }
+
+  /* Div padrão para seções/blocos de conteúdo em cinza escuro */
+  .section-card {
+    background-color: var(--color-bg-depth-1);
+    border: 1px solid var(--color-bg-depth-3);
+    border-radius: 8px;
+    /* Espaçamentos internos proporcionais à tela */
+    @apply p-6 md:p-10 mb-8;
+  }
+
+  /* Div padrão para micro-elementos (Cards internos, depoimentos, itens de lista) */
+  .item-card {
+    background-color: var(--color-bg-depth-2);
+    border-left: 3px solid var(--color-brand-primary);
+    @apply p-4 rounded-r-md transition-all duration-300 hover:border-brand-secondary;
+  }
+}
+
+/* ==========================================================================
+   3. OPÇÕES PARA DESTAQUE DE TEXTO (Utilities Customizados)
+   ========================================================================== */
+@layer utilities {
+  /* Destaque Primário (Mostarda) - Bom para palavras-chave cruciais */
+  .highlight-primary {
+    color: var(--color-bg-pure);
+    background-color: var(--color-brand-primary);
+    @apply px-1.5 py-0.5 font-semibold rounded-xs;
+  }
+
+  /* Destaque Secundário (Laranja) - Bom para alertas ou atenção secundária */
+  .highlight-secondary {
+    color: var(--color-text-main);
+    border-bottom: 2px dashed var(--color-brand-secondary);
+    @apply pb-0.5 font-medium;
+  }
+
+  /* Texto com Gradiente (Mostarda para Laranja) - Excelente para heros e títulos */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Destaque sutil "Code block inline" */
+  .highlight-code {
+    background-color: var(--color-bg-depth-2);
+    color: var(--color-brand-primary);
+    border: 1px solid var(--color-bg-depth-3);
+    @apply px-2 py-0.5 rounded text-sm;
+  }
+}
