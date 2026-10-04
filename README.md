@@ -8,10 +8,20 @@ Portfolio desenvolvido para divulgação dos meus projetos e do meu trabalho com
 
 ## Como executar
 
-Na pasta do projeto:
+Na pasta **backend**:
 
 ```cmd
 cargo run
+```
+
+Na pasta **frontend**:
+
+```cmd
+npm install
+```
+
+```cmd
+npm run dev
 ```
 
 ## Estrutura base

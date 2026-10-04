@@ -3,15 +3,37 @@
     <Sidebar :currentPath="currentPath" @navigate="handleNavigate" class="no-print" />
     
     <main class="main-container">
-      <header class="top-bar">
+      <header class="top-bar no-print">
         <h2>{{ pageTitle }}</h2>
         <div class="status-badge" :class="apiStatus">
           API Rust: {{ apiStatus }}
         </div>
       </header>
 
-      <section class="content-card">
-        <p>Bem-vindo à estrutura base. O ambiente está configurado e pronto para o desenvolvimento das próximas etapas.</p>
+      <!-- Renderização Reativa da View Atual -->
+      <HomeView
+        v-if="currentPath === '/'"
+        :projects="projects"
+        :posts="posts"
+        :categories="categories"
+        @navigate="handleNavigate"
+      />
+
+      <ProjectsView
+        v-else-if="currentPath === '/projetos'"
+        :projects="projects"
+        :categories="categories"
+      />
+
+      <BlogView
+        v-else-if="currentPath === '/blog'"
+        :posts="posts"
+        :categories="categories"
+      />
+
+      <section v-else class="content-card">
+        <h3>Página em construção</h3>
+        <p>A rota {{ currentPath }} será integrada na próxima etapa.</p>
       </section>
     </main>
   </div>
@@ -19,45 +41,60 @@
 
 <script>
 import Sidebar from './components/Sidebar.vue';
+import HomeView from './views/HomeView.vue';
+import ProjectsView from './views/ProjectsView.vue';
+import BlogView from './views/BlogView.vue';
 
 export default {
   name: 'App',
-  components: { Sidebar },
+  components: { Sidebar, HomeView, ProjectsView, BlogView },
   data() {
     return {
       currentPath: '/',
-      apiStatus: 'checking...'
+      apiStatus: 'checking...',
+      categories: [],
+      projects: [],
+      posts: []
     };
   },
   computed: {
     pageTitle() {
       const titles = {
-        '/': 'Home / Dashboard',
+        '/': 'Dashboard / Home',
         '/sobre': 'Sobre Mim',
         '/projetos': 'Projetos',
         '/blog': 'Blog',
         '/contato': 'Contato',
-        '/admin': 'Painel Administrativo'
+        '/admin': 'Painel Admin'
       };
       return titles[this.currentPath] || 'Leandro Dev';
     }
   },
   mounted() {
-    this.checkApiHealth();
+    this.fetchData();
   },
   methods: {
     handleNavigate(path) {
       this.currentPath = path;
     },
-    async checkApiHealth() {
+    async fetchData() {
       try {
-        const res = await fetch('http://localhost:8080/api/v1/health');
-        if (res.ok) {
+        const [resCat, resProj, resBlog] = await Promise.all([
+          fetch('http://localhost:8080/api/v1/categories'),
+          fetch('http://localhost:8080/api/v1/projects'),
+          fetch('http://localhost:8080/api/v1/blog')
+        ]);
+
+        if (resCat.ok && resProj.ok && resBlog.ok) {
+          this.categories = await resCat.json();
+          this.projects = await resProj.json();
+          this.posts = await resBlog.json();
           this.apiStatus = 'online';
         } else {
           this.apiStatus = 'offline';
         }
-      } catch {
+      } catch (err) {
+        console.error('Erro ao conectar com backend Rust:', err);
         this.apiStatus = 'offline';
       }
     }
@@ -114,6 +151,5 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
-  box-shadow: var(--shadow-sm);
 }
 </style>
