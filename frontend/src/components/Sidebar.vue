@@ -73,6 +73,7 @@ export default {
     toggleSidebar() {
       this.isCollapsed = !this.isCollapsed;
       localStorage.setItem('sidebar_collapsed', JSON.stringify(this.isCollapsed));
+      this.$emit('toggle', this.isCollapsed);
     },
     cycleTheme() {
       const themes = ['system', 'light', 'dark'];

@@ -1,8 +1,15 @@
 <template>
   <div class="app-layout">
-    <Sidebar :currentPath="currentPath" @navigate="handleNavigate" class="no-print" />
+    <!-- Passamos uma ref ou evento para saber quando o menu contrai/expande -->
+    <Sidebar 
+      :currentPath="currentPath" 
+      @navigate="handleNavigate" 
+      @toggle="handleSidebarToggle"
+      class="no-print" 
+    />
     
-    <main class="main-container">
+    <!-- Ajustamos a classe condicional :class="{ 'collapsed-sidebar': isSidebarCollapsed }" -->
+    <main :class="['main-container', { 'collapsed-sidebar': isSidebarCollapsed }]">
       <header class="top-bar no-print">
         <h2>{{ pageTitle }}</h2>
         <div class="status-badge" :class="apiStatus">
@@ -10,7 +17,7 @@
         </div>
       </header>
 
-      <!-- Renderização Reativa da View Atual -->
+      <!-- Renderização Reativa das Views -->
       <HomeView
         v-if="currentPath === '/'"
         :projects="projects"
@@ -52,6 +59,7 @@ export default {
     return {
       currentPath: '/',
       apiStatus: 'checking...',
+      isSidebarCollapsed: JSON.parse(localStorage.getItem('sidebar_collapsed') || 'false'),
       categories: [],
       projects: [],
       posts: []
@@ -76,6 +84,9 @@ export default {
   methods: {
     handleNavigate(path) {
       this.currentPath = path;
+    },
+    handleSidebarToggle(collapsed) {
+      this.isSidebarCollapsed = collapsed;
     },
     async fetchData() {
       try {
@@ -108,16 +119,25 @@ export default {
   min-height: 100vh;
 }
 
+/* O container principal agora reage ao estado do menu */
 .main-container {
   flex: 1;
   margin-left: var(--sidebar-width);
   padding: var(--spacing-xl);
   transition: margin-left var(--transition-speed) ease;
+  width: calc(100% - var(--sidebar-width));
+}
+
+/* Quando o menu se recolhe, a margem e largura do container expandem suavemente */
+.main-container.collapsed-sidebar {
+  margin-left: var(--sidebar-collapsed-width);
+  width: calc(100% - var(--sidebar-collapsed-width));
 }
 
 @media (max-width: 768px) {
   .main-container {
     margin-left: var(--sidebar-collapsed-width);
+    width: calc(100% - var(--sidebar-collapsed-width));
     padding: var(--spacing-md);
   }
 }
