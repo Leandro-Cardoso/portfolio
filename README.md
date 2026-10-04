@@ -11,25 +11,7 @@ Portfolio desenvolvido para divulgação dos meus projetos e do meu trabalho com
 Na pasta do projeto:
 
 ```cmd
-npm install
-```
-
-Depois:
-
-```cmd
-npm run dev
-```
-
-Para gerar o build:
-
-```cmd
-npm run build
-```
-
-Para testar o build:
-
-```cmd
-npm run preview
+cargo run
 ```
 
 ## Estrutura base

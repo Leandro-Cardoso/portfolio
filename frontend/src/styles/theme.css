@@ -1,0 +1,62 @@
+:root {
+  /* Paleta Principal */
+  --color-mustard: #EAB308;
+  --color-orange: #F97316;
+  --color-orange-hover: #EA580C;
+  --color-black: #0F172A;
+  --color-white: #FFFFFF;
+
+  /* Status Colors */
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+
+  /* Modos de Cor (Padrão: Light/System) */
+  --bg-primary: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-sidebar: #0F172A;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-sidebar: #94A3B8;
+  --border-color: #E2E8F0;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  /* Fontes e Espaçamentos */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 70px;
+  --transition-speed: 0.3s;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --bg-primary: #090D16;
+  --bg-surface: #1E293B;
+  --bg-sidebar: #0B0F19;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --border-color: #334155;
+}
+
+/* System Dark Preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #090D16;
+    --bg-surface: #1E293B;
+    --bg-sidebar: #0B0F19;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-color: #334155;
+  }
+}
