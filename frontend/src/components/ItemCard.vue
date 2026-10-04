@@ -48,10 +48,12 @@ export default {
   justify-content: space-between;
   gap: var(--spacing-md);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 .item-card:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: #505050;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -64,16 +66,17 @@ export default {
 }
 
 .card-header h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
 .category-badge {
-  padding: 3px 8px;
-  border-radius: 12px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 600;
+  color: #ffffff;
   white-space: nowrap;
 }
 
