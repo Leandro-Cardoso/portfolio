@@ -1,6 +1,5 @@
 <template>
   <div class="app-layout">
-    <!-- Passamos uma ref ou evento para saber quando o menu contrai/expande -->
     <Sidebar 
       :currentPath="currentPath" 
       @navigate="handleNavigate" 
@@ -8,7 +7,6 @@
       class="no-print" 
     />
     
-    <!-- Ajustamos a classe condicional :class="{ 'collapsed-sidebar': isSidebarCollapsed }" -->
     <main :class="['main-container', { 'collapsed-sidebar': isSidebarCollapsed }]">
       <header class="top-bar no-print">
         <h2>{{ pageTitle }}</h2>
@@ -38,6 +36,14 @@
         :categories="categories"
       />
 
+      <AdminView
+        v-else-if="currentPath === '/admin'"
+        :categories="categories"
+        :projects="projects"
+        :posts="posts"
+        @refresh="fetchData"
+      />
+
       <section v-else class="content-card">
         <h3>Página em construção</h3>
         <p>A rota {{ currentPath }} será integrada na próxima etapa.</p>
@@ -51,10 +57,12 @@ import Sidebar from './components/Sidebar.vue';
 import HomeView from './views/HomeView.vue';
 import ProjectsView from './views/ProjectsView.vue';
 import BlogView from './views/BlogView.vue';
+import AdminView from './views/AdminView.vue';
 
 export default {
   name: 'App',
-  components: { Sidebar, HomeView, ProjectsView, BlogView },
+  // REGISTRO DO ADMINVIEW ADICIONADO AQUI:
+  components: { Sidebar, HomeView, ProjectsView, BlogView, AdminView },
   data() {
     return {
       currentPath: '/',
@@ -119,7 +127,6 @@ export default {
   min-height: 100vh;
 }
 
-/* O container principal agora reage ao estado do menu */
 .main-container {
   flex: 1;
   margin-left: var(--sidebar-width);
@@ -128,7 +135,6 @@ export default {
   width: calc(100% - var(--sidebar-width));
 }
 
-/* Quando o menu se recolhe, a margem e largura do container expandem suavemente */
 .main-container.collapsed-sidebar {
   margin-left: var(--sidebar-collapsed-width);
   width: calc(100% - var(--sidebar-collapsed-width));
