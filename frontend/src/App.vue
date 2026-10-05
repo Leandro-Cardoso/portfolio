@@ -15,17 +15,25 @@
         </div>
       </header>
 
-      <!-- Renderização Reativa das Views -->
+      <!-- Views -->
       <HomeView
         v-if="currentPath === '/'"
         :projects="projects"
         :posts="posts"
         :categories="categories"
+        :siteInfo="siteInfo"
         @navigate="handleNavigate"
       />
 
       <AboutView
         v-else-if="currentPath === '/sobre'"
+        :siteInfo="siteInfo"
+      />
+
+      <CvView
+        v-else-if="currentPath === '/curriculo'"
+        :siteInfo="siteInfo"
+        :projects="projects"
       />
 
       <ProjectsView
@@ -42,20 +50,17 @@
 
       <ContactView
         v-else-if="currentPath === '/contato'"
+        :siteInfo="siteInfo"
       />
 
       <AdminView
         v-else-if="currentPath === '/admin'"
+        :siteInfo="siteInfo"
         :categories="categories"
         :projects="projects"
         :posts="posts"
         @refresh="fetchData"
       />
-
-      <section v-else class="content-card">
-        <h3>Página em construção</h3>
-        <p>A rota {{ currentPath }} será integrada na próxima etapa.</p>
-      </section>
     </main>
   </div>
 </template>
@@ -64,6 +69,7 @@
 import Sidebar from './components/Sidebar.vue';
 import HomeView from './views/HomeView.vue';
 import AboutView from './views/AboutView.vue';
+import CvView from './views/CvView.vue';
 import ProjectsView from './views/ProjectsView.vue';
 import BlogView from './views/BlogView.vue';
 import ContactView from './views/ContactView.vue';
@@ -71,13 +77,13 @@ import AdminView from './views/AdminView.vue';
 
 export default {
   name: 'App',
-  // REGISTRO DO ADMINVIEW ADICIONADO AQUI:
-  components: { Sidebar, HomeView, AboutView, ProjectsView, BlogView, ContactView, AdminView },
+  components: { Sidebar, HomeView, AboutView, CvView, ProjectsView, BlogView, ContactView, AdminView },
   data() {
     return {
       currentPath: '/',
       apiStatus: 'checking...',
       isSidebarCollapsed: JSON.parse(localStorage.getItem('sidebar_collapsed') || 'false'),
+      siteInfo: {},
       categories: [],
       projects: [],
       posts: []
@@ -88,6 +94,7 @@ export default {
       const titles = {
         '/': 'Dashboard / Home',
         '/sobre': 'Sobre Mim',
+        '/curriculo': 'Currículo Profissional',
         '/projetos': 'Projetos',
         '/blog': 'Blog',
         '/contato': 'Contato',
@@ -108,13 +115,15 @@ export default {
     },
     async fetchData() {
       try {
-        const [resCat, resProj, resBlog] = await Promise.all([
+        const [resInfo, resCat, resProj, resBlog] = await Promise.all([
+          fetch('http://localhost:8080/api/v1/site-info'),
           fetch('http://localhost:8080/api/v1/categories'),
           fetch('http://localhost:8080/api/v1/projects'),
           fetch('http://localhost:8080/api/v1/blog')
         ]);
 
-        if (resCat.ok && resProj.ok && resBlog.ok) {
+        if (resInfo.ok && resCat.ok && resProj.ok && resBlog.ok) {
+          this.siteInfo = await resInfo.json();
           this.categories = await resCat.json();
           this.projects = await resProj.json();
           this.posts = await resBlog.json();
@@ -180,12 +189,5 @@ export default {
 .status-badge.offline {
   background-color: rgba(239, 68, 68, 0.2);
   color: var(--color-error);
-}
-
-.content-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
 }
 </style>
