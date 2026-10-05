@@ -24,6 +24,10 @@
         @navigate="handleNavigate"
       />
 
+      <AboutView
+        v-else-if="currentPath === '/sobre'"
+      />
+
       <ProjectsView
         v-else-if="currentPath === '/projetos'"
         :projects="projects"
@@ -34,6 +38,10 @@
         v-else-if="currentPath === '/blog'"
         :posts="posts"
         :categories="categories"
+      />
+
+      <ContactView
+        v-else-if="currentPath === '/contato'"
       />
 
       <AdminView
@@ -55,14 +63,16 @@
 <script>
 import Sidebar from './components/Sidebar.vue';
 import HomeView from './views/HomeView.vue';
+import AboutView from './views/AboutView.vue';
 import ProjectsView from './views/ProjectsView.vue';
 import BlogView from './views/BlogView.vue';
+import ContactView from './views/ContactView.vue';
 import AdminView from './views/AdminView.vue';
 
 export default {
   name: 'App',
   // REGISTRO DO ADMINVIEW ADICIONADO AQUI:
-  components: { Sidebar, HomeView, ProjectsView, BlogView, AdminView },
+  components: { Sidebar, HomeView, AboutView, ProjectsView, BlogView, ContactView, AdminView },
   data() {
     return {
       currentPath: '/',

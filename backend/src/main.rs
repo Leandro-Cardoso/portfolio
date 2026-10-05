@@ -41,6 +41,14 @@ struct CategoryQuery {
     category: Option<String>,
 }
 
+#[derive(Serialize, Deserialize, Clone)]
+pub struct ContactMessage {
+    pub name: String,
+    pub email: String,
+    pub subject: String,
+    pub message: String,
+}
+
 // --- Endpoints Categorias ---
 #[get("/api/v1/categories")]
 async fn get_categories(data: web::Data<AppState>) -> impl Responder {
@@ -125,6 +133,17 @@ async fn delete_blog_post(data: web::Data<AppState>, id: web::Path<String>) -> i
     let target_id = id.into_inner();
     posts.retain(|p| p.id != target_id);
     HttpResponse::Ok().json(serde_json::json!({ "status": "deleted", "id": target_id }))
+}
+
+// Endpoint POST para processar mensagens de contato
+#[post("/api/v1/contact")]
+async fn send_contact_message(item: web::Json<ContactMessage>) -> impl Responder {
+    let msg = item.into_inner();
+    println!("📩 Nova mensagem de contato recebida de: {} ({})", msg.name, msg.email);
+    HttpResponse::Ok().json(serde_json::json!({
+        "status": "success",
+        "message": "Mensagem recebida com sucesso!"
+    }))
 }
 
 #[actix_web::main]
